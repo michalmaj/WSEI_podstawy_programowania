@@ -1,62 +1,50 @@
- porównywanie wartości
-#include iostream
+// operacje logiczne
+#include <iostream>
 
 int main()
 {
-	bool test_rownosci{ false };
-	bool test_nierownosci{ false };
+	int liczba{};
+	constexpr int mniejsza{ 10 };
+	constexpr int wieksza{ 20 };
 
-	int liczba1{}, liczba2{};
+	std::cout << std::boolalpha;
+	bool czy_w_granicy{ false };
+	while (true)
+	{		
+		std::cout << "Wprowadz zmienna, ktora jest mniejsza niz " << wieksza;
+		std::cout << ", oraz jest wieksza od: " << mniejsza << std::endl;
+		std::cin >> liczba;
+		if (!std::cin)
+		{
+			std::cout << "Nieznany imput!\n";
+			std::cin.clear();
+			std::cin.ignore();
+			continue;
 
-	 do zwracania true lub false zmiast 10
-	stdcout  stdboolalpha;
-	 stdcout  stdnoboolalpha; odwoalnie powyzszego
+		}
+		czy_w_granicy = (liczba > mniejsza&& liczba < wieksza);
+		if (czy_w_granicy == true)
+		{
+			std::cout << "Twoja liczba: " << liczba << " jest OK\n";
+			break;
+		}
+		else
+		{
+			std::cout << "Bledna liczba!\n";
+			if (liczba == mniejsza || liczba == wieksza)
+			{
+				std::cout << "Podana liczba powinna nalezec do niedomknietego";
+				std::cout << " zbioru liczb (10,20)\n";
+			}
+			else
+			{
+				std::cout << "Podana liczba jest poza zakresem\n";
+			}
+		}
+	/*	std::cin.clear();
+		std::cin.ignore();*/
+	}
 
-	stdcout  Podaj dwie liczby oddzielone spacja ;
-	stdcin  liczba1  liczba2;
-
-	test_rownosci = (liczba1 == liczba2);
-	test_nierownosci = (liczba1 != liczba2);
-
-	stdcout  Test rownosci   test_rownosci  stdendl;
-	stdcout  Test nierownosci   test_nierownosci  stdendl;
-
-	stdcout  ==============================================n;
-
-	 znaki
-	char litera1{}, litera2{};
-	stdcout  Podaj dwie litery oddzielone spacja ;
-	stdcin  litera1  litera2;
-	test_rownosci = (litera1 == litera2);
-	test_nierownosci = (litera1 != litera2);
-	stdcout  Test rownosci   test_rownosci  stdendl;
-	stdcout  Test nierownosci   test_nierownosci  stdendl;
-
-
-	stdcout  ==============================================n;
-
-	 liczby zmienno przecinkowe
-	double zmienno1{}, zmienno2{};
-	stdcout  Podaj dwie liczby zmiennoprzecinkowe oddzielone spacja ;
-	 test dla 2.0 i 1.99999999999999999999999999
-	stdcin  zmienno1  zmienno2;
-	test_rownosci = (zmienno1 == zmienno2);
-	test_nierownosci = (zmienno1 != zmienno2);
-	 błąd ponieważ przechowywanie liczb w pamięci
-	stdcout  Test rownosci   test_rownosci  stdendl;
-	stdcout  Test nierownosci   test_nierownosci  stdendl;
-
-
-	stdcout  ==============================================n;
-
-	 całkowita i zmiennoprzecinkowa
-	int liczba3{};
-	double zmienno3{};
-	stdcout  Podaj dwie liczby oddzielone spacja ;
-	stdcin  liczba3  zmienno3;
-	test_rownosci = (liczba3 == zmienno3);
-	test_nierownosci = (liczba3 != zmienno3);
-	stdcout  Test rownosci   test_rownosci  stdendl;
-	stdcout  Test nierownosci   test_nierownosci  stdendl;
+	std::cout << czy_w_granicy << std::endl;
 	return 0;
 }
