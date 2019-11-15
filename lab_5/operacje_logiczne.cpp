@@ -41,8 +41,7 @@ int main()
 				std::cout << "Podana liczba jest poza zakresem\n";
 			}
 		}
-	/*	std::cin.clear();
-		std::cin.ignore();*/
+
 	}
 
 	std::cout << czy_w_granicy << std::endl;
